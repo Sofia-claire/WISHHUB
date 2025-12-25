@@ -107,7 +107,7 @@ python app.py
 
 - **Расскажите друзьям** о [wish-hub.ru](https://wish-hub.ru)
 - **Подпишитесь** на [Telegram-канал](https://t.me/Wishhub_ru)
-- **Финансово поднимет нам мотивацию)** [Чаевые!](hipolink.net/eclairechik/tips)
+- **Финансово поднимет нам мотивацию)** [Чаевые!](https://hipolink.net/eclairechik/tips)
 - **Предложите идею** — создайте Issue на GitHub
 - **Помогите с кодом** — мы открыты для Pull Request'ов
 
