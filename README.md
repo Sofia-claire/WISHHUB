@@ -55,8 +55,8 @@ WISHHUB/
 ### **Разработка и идея**
 - **@Sofia-claire** (София Уливанова) — `sofiaulivanova@gmail.com` 
 - **@fisyarik** (Анфиса Перепелкина) — `anfisasunny@gmail.com` 
-- **@frunzesunset** (Владимир Цацын) — `alex@example.com` 
-- **@weifco** (Вика Лиман) — `yoshimurrrr@gmail.com` 
+- **@frunzesunset** (Владимир Цацын) — `yoshimurrrr@gmail.com` 
+- **@weifco** (Вика Лиман) 
 
 ### **Telegram-канал**
 - **@wishhub_ru** — ежедневные подборки подарков, новости о обновлениях сайта
