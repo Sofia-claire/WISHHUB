@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WishHub - Создать вишлист</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="create-page">
+    <div class="container">
+        <header>
+    <h1><i class="fas fa-gift"></i> WishHub</h1>
+
+    <div class="header-image">
+        <img src="{{ url_for('static', filename='img/wishhub.png') }}" alt="WishHub">
+    </div>
+
+    <p class="subtitle">Создайте и делитесь вашими вишлистами</p>
+</header>
+
+        <main>
+            <div class="create-section">
+                <h2><i class="fas fa-plus-circle"></i> Создать новый вишлист</h2>
+                
+                <form method="post" class="create-form" id="createForm">
+                    <div class="input-group">
+                        <label for="wishlist-name">
+                            <i class="fas fa-pen"></i> Название вишлиста:
+                        </label>
+                        <input type="text" id="wishlist-name" name="name" 
+                               placeholder="Мой день рождения" 
+                               value="Мой вишлист" 
+                               class="form-input">
+                        <p class="form-hint">Это название увидят ваши друзья</p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary create-btn">
+                        <i class="fas fa-magic"></i> Создать вишлист
+                    </button>
+                </form>
+
+                <div class="features">
+                    <h3><i class="fas fa-star"></i> Возможности WishHub:</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-link feature-icon"></i>
+                            <h4>Две ссылки</h4>
+                            <p>Публичная для просмотра и приватная для редактирования</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-share-alt feature-icon"></i>
+                            <h4>Легкий доступ</h4>
+                            <p>Отправьте нужную ссылку друзьям или себе</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-shopping-cart feature-icon"></i>
+                            <h4>Простое добавление</h4>
+                            <p>Добавляйте товары вручную за минуту</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt feature-icon"></i>
+                            <h4>Безопасность</h4>
+                            <p>Только вы можете редактировать свой список</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>
+                <i class="fas fa-heart"></i> WishHub • 
+                <span class="footer-note">Простой и удобный сервис вишлистов</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно для шаринга -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-share-alt"></i> Поделиться вишлистом</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="wishlist-name-container">
+                    <h3 id="modalWishlistName">Название вишлиста</h3>
+                </div>
+                
+                <div class="link-options">
+                    <div class="link-option">
+                        <div class="option-header">
+                            <div class="option-icon view-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="option-info">
+                                <h4>Только просмотр</h4>
+                                <p>Друзья смогут только смотреть список, но не редактировать его</p>
+                            </div>
+                        </div>
+                        <div class="option-input-group">
+                            <input type="text" id="viewLink" readonly class="link-input-large">
+                            <button class="btn btn-copy" data-clipboard-target="#viewLink">
+                                <i class="fas fa-copy"></i> Копировать
+                            </button>
+                        </div>
+                        <div class="option-share-buttons">
+                            <button class="btn btn-share whatsapp" data-type="view">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="btn btn-share telegram" data-type="view">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </button>
+                            <button class="btn btn-share email" data-type="view">
+                                <i class="fas fa-envelope"></i> Email
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="divider">
+                        <span>или</span>
+                    </div>
+                    
+                    <div class="link-option">
+                        <div class="option-header">
+                            <div class="option-icon edit-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="option-info">
+                                <h4>Полный доступ</h4>
+                                <p>Позволяет редактировать список. Делитесь только с доверенными лицами!</p>
+                            </div>
+                        </div>
+                        <div class="option-input-group">
+                            <input type="text" id="editLink" readonly class="link-input-large">
+                            <button class="btn btn-copy" data-clipboard-target="#editLink">
+                                <i class="fas fa-copy"></i> Копировать
+                            </button>
+                        </div>
+                        <div class="option-share-buttons">
+                            <button class="btn btn-share whatsapp" data-type="edit">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="btn btn-share telegram" data-type="edit">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </button>
+                            <button class="btn btn-share email" data-type="edit">
+                                <i class="fas fa-envelope"></i> Email
+                            </button>
+                        </div>
+                        <div class="security-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Внимание: Эта ссылка дает полный доступ к редактированию списка!</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-hint">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>Скопируйте нужную ссылку или поделитесь напрямую через мессенджер</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Данные для нового вишлиста (если только что создан)
+        const newWishlist = {{ new_wishlist|tojson|safe if new_wishlist else 'null' }};
+        
+        // Показываем модальное окно при загрузке, если есть новый вишлист
+        document.addEventListener('DOMContentLoaded', function() {
+            // Автофокус на поле ввода названия
+            document.getElementById('wishlist-name').focus();
+            document.getElementById('wishlist-name').select();
+            
+            // Если только что создали вишлист - показываем модалку
+            if (newWishlist) {
+                showShareModal(newWishlist);
+            }
+            
+            // Настройка кнопок "Поделиться" для существующих вишлистов
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const wishlistData = {
+                        name: this.dataset.name,
+                        viewUrl: this.dataset.viewUrl,
+                        editUrl: this.dataset.editUrl
+                    };
+                    showShareModal(wishlistData);
+                });
+            });
+            
+            // Настройка модального окна
+            const modal = document.getElementById('shareModal');
+            const closeBtn = document.querySelector('.modal-close');
+            
+            // Закрытие модалки по клику на крестик
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            // Закрытие модалки по клику вне ее
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+            
+            // Копирование ссылок
+            document.querySelectorAll('.btn-copy').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.dataset.clipboardTarget;
+                    const input = document.querySelector(targetId);
+                    
+                    input.select();
+                    input.setSelectionRange(0, 99999); // Для мобильных
+                    
+                    try {
+                        navigator.clipboard.writeText(input.value).then(() => {
+                            showNotification('Ссылка скопирована в буфер обмена!', 'success');
+                        });
+                    } catch (err) {
+                        // Fallback для старых браузеров
+                        document.execCommand('copy');
+                        showNotification('Ссылка скопирована!', 'success');
+                    }
+                    
+                    // Визуальный feedback
+                    this.innerHTML = '<i class="fas fa-check"></i> Скопировано';
+                    this.style.background = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-copy"></i> Копировать';
+                        this.style.background = '';
+                    }, 2000);
+                });
+            });
+            
+            // Шаринг через мессенджеры
+            document.querySelectorAll('.btn-share').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    const link = type === 'view' 
+                        ? document.getElementById('viewLink').value
+                        : document.getElementById('editLink').value;
+                    const wishlistName = document.getElementById('modalWishlistName').textContent;
+                    
+                    const text = `Посмотри мой вишлист "${wishlistName}": ${link}`;
+                    const encodedText = encodeURIComponent(text);
+                    
+                    let shareUrl;
+                    switch(this.classList[2]) {
+                        case 'whatsapp':
+                            shareUrl = `https://wa.me/?text=${encodedText}`;
+                            break;
+                        case 'telegram':
+                            shareUrl = `https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent(`Посмотри мой вишлист "${wishlistName}"`)}`;
+                            break;
+                        case 'email':
+                            shareUrl = `mailto:?subject=Мой вишлист: ${encodeURIComponent(wishlistName)}&body=${encodedText}`;
+                            break;
+                    }
+                    
+                    window.open(shareUrl, '_blank');
+                });
+            });
+            
+            // Копирование ссылок по клику на поле ввода
+            document.querySelectorAll('.link-input').forEach(input => {
+                input.addEventListener('click', function() {
+                    this.select();
+                    try {
+                        navigator.clipboard.writeText(this.value).then(() => {
+                            showNotification('Ссылка скопирована!', 'success');
+                        });
+                    } catch (err) {
+                        document.execCommand('copy');
+                        showNotification('Ссылка скопирована!', 'success');
+                    }
+                    
+                    const originalText = this.value;
+                    this.value = 'Скопировано!';
+                    this.style.background = '#e8f5e9';
+                    this.style.color = '#2e7d32';
+                    
+                    setTimeout(() => {
+                        this.value = originalText;
+                        this.style.background = '';
+                        this.style.color = '';
+                    }, 1500);
+                });
+            });
+        });
+        
+        // Функция показа модального окна
+        function showShareModal(wishlistData) {
+            document.getElementById('modalWishlistName').textContent = wishlistData.name;
+            document.getElementById('viewLink').value = wishlistData.viewUrl;
+            document.getElementById('editLink').value = wishlistData.editUrl;
+            
+            const modal = document.getElementById('shareModal');
+            modal.classList.add('active');
+            
+            // Прокрутка к верху
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        
+        // Функция показа уведомлений
+        function showNotification(msg, type = 'success') {
+            const n = document.getElementById('notification');
+            n.textContent = msg;
+            n.className = `notification ${type} show`;
+            setTimeout(() => n.classList.remove('show'), 3000);
+        }
+        
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('shareModal').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
