@@ -52,10 +52,10 @@ WISHHUB/
 ## 👨‍💻 Команда проекта
 
 ### **Разработка и идея**
-- **@Sofia-claire** (София Уливанова) — `sofiaulivanova@gmail.com` 
-- **@fisyarik** (Анфиса Перепелкина) — `anfisasunny@gmail.com` 
-- **@frunzesunset** (Владимир Цацын) — `yoshimurrrr@gmail.com` 
-- **@weifco** (Вика Лиман) 
+- **@Sofia-claire** (София Уливанова) - `sofiaulivanova@gmail.com` 
+- **@fisyarik** (Анфиса Перепелкина) - `anfisasunny@gmail.com` 
+- **@frunzesunset** (Владимир Цацын) - `yoshimurrrr@gmail.com` 
+- **@weifco** (Вика Лиман) - `limanviktoria08gmail.com` 
 
 ### **Telegram-канал**
 - **@wishhub_ru** — ежедневные подборки подарков, новости о обновлениях сайта
